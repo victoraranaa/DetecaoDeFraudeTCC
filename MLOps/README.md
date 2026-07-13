@@ -39,8 +39,6 @@ MLOps/Dockerfile + docker-compose.yml  empacota o app Streamlit
 
 **Sobre as camadas raw/silver/gold:** `Dados/silver/clean_data.csv` e `Dados/gold/abt.csv` são cópias organizadas, geradas pelo próprio `pipeline_orchestration.py` depois de cada etapa. Os arquivos originais (`Dados/clean_data.csv`, `Dados/abt.csv`) continuam nos caminhos de sempre, porque o resto do projeto (scripts do grupo e o app) já espera esses caminhos — criar cópias evita ter que alterar o código do grupo só para reorganizar pastas.
 
-Avaliei usar o Airflow para orquestrar essas camadas (é a ferramenta mais comum pra isso e aparece no diagrama de referência do PDF do projeto), mas optei por manter só o `pipeline_orchestration.py` nesta entrega — um comando só, já testado e mais simples de manter dado o prazo apertado.
-
 ## O que o app mostra
 
 O app (`MLOps/app/main.py`) tem duas abas:

@@ -106,8 +106,6 @@ As camadas seguem a **arquitetura medalhão** (raw/silver/gold):
 
 As pastas `silver` e `gold` são **cópias organizadas**, criadas pelo próprio `pipeline_orchestration.py` (função `organize_layer`, ver item 5) depois de cada etapa. Os arquivos originais (`Dados/clean_data.csv`, `Dados/abt.csv`) continuam nos mesmos lugares de sempre, porque o resto do projeto (scripts do grupo e o app da Etapa 6) já espera esses caminhos. Criar cópias evita ter que mexer no código do grupo só para renomear pastas. Os nomes das camadas vêm de `MLOps/pipeline_config.json`, não estão fixos no código.
 
-**Por que não usei um orquestrador dedicado (Airflow):** é a ferramenta mais comum para esse tipo de pipeline e aparece no diagrama de referência do PDF do projeto, mas orquestrar de verdade (agendamento, retentativas, interface de monitoramento) é um estudo novo em cima de tudo que já falta pra entrega. Preferi ter uma arquitetura em camadas funcional e simples de explicar dado o prazo.
-
 ### 7. Página de referência sobre pré-processamento (`MLOps/app/pages/1_Pre_processamento.py`)
 
 O Streamlit tem uma convenção simples de múltiplas páginas: qualquer arquivo `.py` dentro de uma pasta `pages/`, ao lado do script principal, vira automaticamente um item no menu lateral — não precisa escrever nenhuma configuração de navegação.
