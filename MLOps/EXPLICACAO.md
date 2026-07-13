@@ -2,17 +2,13 @@
 
 ## O que é essa etapa?
 
-Um modelo treinado num notebook não serve ao negócio enquanto não estiver em produção. Deploy é o processo de **colocar o modelo para funcionar no mundo real** — recebendo uma transação nova e retornando uma previsão.
-
-MLOps (Machine Learning Operations) é o conjunto de práticas para manter o modelo funcionando bem ao longo do tempo, mesmo depois que ele "sai do laboratório".
-
 > Esta etapa é **individual** — cada membro do grupo entrega sua própria implementação, em cima do mesmo modelo treinado pelo grupo (`Model/fraud_model.pkl`). Nada do modelo, da ABT ou dos scripts de `DataPipeline/`/`Model/train.py` é alterado aqui.
 
 ---
 
-## O que foi implementado (e o que não foi)
+## O que foi implementado
 
-Este projeto implementa **só o app Streamlit** — não há API REST (FastAPI) nem banco de dados de logs. Foi uma escolha deliberada: um dashboard visual é mais fácil de demonstrar do que uma API que só se mostra via Swagger/curl. Não existe endpoint `/predict` neste projeto.
+Este projeto implementa **só o app Streamlit** — não há API REST (FastAPI) nem banco de dados de logs. Não existe endpoint `/predict` neste projeto.
 
 ```
 raw (Dados/raw/*.csv)
@@ -129,7 +125,6 @@ A ideia é ter esses números já prontos na tela na hora da apresentação, sem
 Modelos de fraude se degradam com o tempo — os padrões de fraude mudam e o perfil de transações também.
 
 ### Data Drift
-Quando a distribuição dos dados de entrada muda:
 ```
 Treino: TransactionAmt médio = USD 134
 Produção após 3 meses: TransactionAmt médio = USD 189
@@ -137,7 +132,7 @@ Produção após 3 meses: TransactionAmt médio = USD 189
 ```
 
 ### Model Drift (Concept Drift)
-Quando a relação entre as features e a fraude muda (novos tipos de fraude surgem que o modelo nunca viu no treino).
+Novos tipos de fraude que o modelo nunca viu no treino mudam a relação entre as features e o target.
 
 ### Métricas a Monitorar em Produção
 
@@ -176,9 +171,3 @@ python MLOps/pipeline_orchestration.py --output predicoes.csv
 ## Prazo
 
 **15/07/2026** — Entrega individual (2 dias após a entrega de grupo em 13/07)
-
----
-
-## Resumo para Iniciantes
-
-> Deploy é transformar o modelo de uma "experiência de laboratório" em algo que alguém consegue usar de verdade. É como sair do laboratório e abrir a farmácia. O Docker garante que o remédio (modelo) funcione da mesma forma em qualquer computador. O MLOps garante que o remédio não perca a validade sem que ninguém perceba.
