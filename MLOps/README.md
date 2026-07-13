@@ -8,7 +8,7 @@ modelo, a ABT ou os scripts de `DataPipeline/`/`Model/train.py` do grupo.
 
 ## Arquitetura
 
-O pipeline segue a arquitetura em camadas (raw → silver → gold) vista no MBA:
+O pipeline segue a arquitetura em camadas (raw → silver → gold):
 
 ```
 raw (Dados/raw/*.csv)
@@ -117,13 +117,11 @@ python MLOps/pipeline_orchestration.py --skip-sanitization --skip-abt --output p
 
 ## Página extra: Pré-processamento (`MLOps/app/pages/1_Pre_processamento.py`)
 
-A professora pediu para mostrar um pouco do pré-processamento na apresentação. Como o Streamlit cria menu lateral automaticamente para qualquer arquivo dentro de `MLOps/app/pages/`, essa página aparece sozinha ao lado da principal — sem nenhuma configuração extra.
+A professora pediu para mostrar um pouco do pré-processamento. Como o Streamlit cria menu lateral automaticamente para qualquer arquivo dentro de `MLOps/app/pages/`, essa página aparece sozinha ao lado da principal — sem nenhuma configuração extra.
 
 Ela só lê os metadados que o grupo já gera (`Dados/clean_data_report.json` e `Dados/abt_metadata.json`) — não recalcula nada e não abre os CSVs (o `abt.csv` sozinho tem 5,5GB, não faz sentido carregar isso num app de demonstração):
 - **Raw → Silver:** shape antes/depois da limpeza, distribuição do target, outliers detectados por coluna (método IQR), variáveis categóricas com mais valores ausentes.
 - **Silver → Gold:** total de features por grupo (V, C, D, M, cartão, engenharia, flags de ausência), lista das transformações aplicadas, variáveis mais correlacionadas com fraude.
-
-Serve como "cola" durante a apresentação — os números já estão prontos, não precisa abrir código nem recalcular nada na hora.
 
 ## Threshold de decisão
 
@@ -162,4 +160,4 @@ O app hoje só mostra o resultado na tela — quem decide o que fazer com aquilo
 
 Do lado do monitoramento (seção anterior), a ideia é parecida: em vez de alguém checar o drift manualmente todo mês, um agente poderia rodar essa checagem sozinho e, se encontrar uma queda de AUC-ROC ou um drift significativo, abrir automaticamente um chamado pro time de dados avaliar o retreino — a pessoa só entra quando já existe um sinal concreto de que algo mudou, não para checar se mudou.
 
-Nada disso está implementado neste projeto — é uma proposta de próximo passo, pensada pra mostrar que a solução tem para onde crescer depois da demonstração da Etapa 6, e não pra ser confundida com algo que já está rodando.
+Nada disso está implementado neste projeto — é uma proposta de próximo passo, pensada pra mostrar que a solução tem para onde crescer depois desta entrega, e não pra ser confundida com algo que já está rodando.

@@ -41,7 +41,7 @@ O app tem duas abas:
 - **Predição Individual**: formulário com 6 campos editáveis (valor da transação, produto, bandeira e tipo de cartão, dispositivo, verificação M4) → `preprocessing.py` monta a linha completa de 462 colunas → `predict.py` consulta o modelo → a tela mostra probabilidade, classificação (FRAUDE/LEGÍTIMA) e nível de risco (BAIXO/MÉDIO/ALTO).
 - **Predição em Lote (CSV)**: upload de um CSV já no formato da ABT → `predict.predict_batch()` roda o modelo em todas as linhas de uma vez → tabela com probabilidade/classificação/risco por linha + botão de download do resultado.
 
-Abaixo das abas, o app também mostra a **performance do modelo** (ROC-AUC, Precisão, Recall, F1-Score e matriz de confusão, lidos de `Model/training_metrics.json`) e o gráfico de importância das principais features — assim dá pra explicar o modelo sem precisar abrir o notebook ou o PPT durante a demonstração.
+Abaixo das abas, o app também mostra a **performance do modelo** (ROC-AUC, Precisão, Recall, F1-Score e matriz de confusão, lidos de `Model/training_metrics.json`) e o gráfico de importância das principais features.
 
 O modelo tem 462 colunas porque foi treinado com todas as variáveis Vesta (V1-V339, opacas — a Vesta não divulga o significado). Não faz sentido pedir isso num formulário, então as ~450 colunas que o usuário não edita vêm de uma **transação real** da base de treino (ver "Perfis-base" abaixo) — isso vale só para a aba individual; a aba de lote espera um CSV que já tem as 462 colunas prontas.
 
@@ -96,7 +96,7 @@ Roda em sequência os 3 passos do fluxo (dado bruto → limpo → ABT → predi�
 
 ### 6. Arquitetura em camadas (raw/silver/gold)
 
-O MBA ensina a organizar dados de um pipeline em três camadas — é a chamada **arquitetura medalhão**:
+As camadas seguem a **arquitetura medalhão** (raw/silver/gold):
 
 | Camada | O que é | Neste projeto |
 |--------|---------|----------------|
@@ -115,8 +115,6 @@ O Streamlit tem uma convenção simples de múltiplas páginas: qualquer arquivo
 Essa página não recalcula nada — só lê dois arquivos que o grupo já gera (`Dados/clean_data_report.json` e `Dados/abt_metadata.json`) e mostra:
 - **Raw → Silver:** quantas linhas/colunas antes e depois da limpeza, distribuição de fraude vs. legítima, outliers detectados por coluna, variáveis categóricas com mais valores ausentes.
 - **Silver → Gold:** quantas features vieram de cada grupo (V, C, D, M, cartão, etc.), a lista de transformações que o `abt_transform.py` aplicou, e as variáveis mais correlacionadas com fraude.
-
-A ideia é ter esses números já prontos na tela na hora da apresentação, sem precisar abrir o notebook de EDA ou o código de limpeza ao vivo.
 
 ---
 
@@ -165,9 +163,3 @@ python Model/predict.py --input Dados/abt.csv --output predicoes.csv
 # Pipeline completo (bruto -> ABT -> predição), já organiza Dados/silver/ e Dados/gold/
 python MLOps/pipeline_orchestration.py --output predicoes.csv
 ```
-
----
-
-## Prazo
-
-**15/07/2026** — Entrega individual (2 dias após a entrega de grupo em 13/07)
