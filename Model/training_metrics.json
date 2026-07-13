@@ -1,0 +1,240 @@
+{
+  "model_config": {
+    "model": {
+      "algorithm": "LightGBM",
+      "library": "lightgbm",
+      "version": "4.6.0",
+      "task": "binary_classification"
+    },
+    "hyperparameters": {
+      "n_estimators": 200,
+      "max_depth": 6,
+      "learning_rate": 0.1,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "scale_pos_weight": 28.8,
+      "random_state": 42,
+      "n_jobs": -1,
+      "eval_metric": "auc",
+      "tree_method": "hist"
+    },
+    "training": {
+      "target_column": "isFraud",
+      "test_size": 0.2,
+      "random_state": 42,
+      "stratify": true,
+      "early_stopping_rounds": 20,
+      "validation_split": 0.1,
+      "cv_folds": 5
+    },
+    "evaluation": {
+      "metrics": [
+        "roc_auc",
+        "precision",
+        "recall",
+        "f1",
+        "precision_recall_auc",
+        "confusion_matrix"
+      ],
+      "threshold_optimization": "f1"
+    },
+    "metadata": {
+      "created_at": "2026-06-27",
+      "project": "Fraud Detection - IEEE-CIS",
+      "institution": "FIA Business School - LABDATA",
+      "version": "1.0.0"
+    }
+  },
+  "selected_model": "XGBoost",
+  "best_params": {
+    "n_estimators": 782,
+    "max_depth": 9,
+    "learning_rate": 0.24420460844911424,
+    "subsample": 0.9579309401710595,
+    "colsample_bytree": 0.8391599915244341,
+    "min_child_weight": 10,
+    "gamma": 0.4424625102595975,
+    "reg_alpha": 1.959828624191452,
+    "reg_lambda": 1.4070456001948426,
+    "scale_pos_weight": 23.013213230530575
+  },
+  "test_metrics": {
+    "roc_auc": 0.9643113705527236,
+    "precision": 0.8370694368507381,
+    "recall": 0.740866198887007,
+    "f1": 0.786035168784495,
+    "fbeta_2": 0.7582961862308073,
+    "pr_auc": 0.8316471780522041,
+    "confusion_matrix": [
+      [
+        113379,
+        596
+      ],
+      [
+        1071,
+        3062
+      ]
+    ],
+    "tn": 113379,
+    "fp": 596,
+    "fn": 1071,
+    "tp": 3062,
+    "feature_importance_top20": [
+      {
+        "feature": "V70",
+        "importance": 0.06442748755216599
+      },
+      {
+        "feature": "V91",
+        "importance": 0.05956209823489189
+      },
+      {
+        "feature": "M4_missing",
+        "importance": 0.0507146492600441
+      },
+      {
+        "feature": "V258",
+        "importance": 0.03951490670442581
+      },
+      {
+        "feature": "V264",
+        "importance": 0.02816612645983696
+      },
+      {
+        "feature": "V294",
+        "importance": 0.026833100244402885
+      },
+      {
+        "feature": "V_top20_sum",
+        "importance": 0.02487936243414879
+      },
+      {
+        "feature": "V198",
+        "importance": 0.012167892418801785
+      },
+      {
+        "feature": "C14",
+        "importance": 0.010561371222138405
+      },
+      {
+        "feature": "V337",
+        "importance": 0.008426841348409653
+      },
+      {
+        "feature": "C8",
+        "importance": 0.00832340121269226
+      },
+      {
+        "feature": "V252",
+        "importance": 0.007848398759961128
+      },
+      {
+        "feature": "V279",
+        "importance": 0.007839317433536053
+      },
+      {
+        "feature": "V115",
+        "importance": 0.007801420986652374
+      },
+      {
+        "feature": "C3",
+        "importance": 0.007468970026820898
+      },
+      {
+        "feature": "V244",
+        "importance": 0.006972921546548605
+      },
+      {
+        "feature": "V322",
+        "importance": 0.00682464987039566
+      },
+      {
+        "feature": "V34",
+        "importance": 0.006788074504584074
+      },
+      {
+        "feature": "V189",
+        "importance": 0.006456905044615269
+      },
+      {
+        "feature": "V336",
+        "importance": 0.006392234470695257
+      }
+    ]
+  },
+  "cross_validation": {
+    "roc_auc": {
+      "scores": [
+        0.9600792946928526,
+        0.9592934946879389,
+        0.9622370812896502,
+        0.9620933318046764,
+        0.9615576466883677
+      ],
+      "mean": 0.9610521698326971,
+      "std": 0.0011647286865919507,
+      "min": 0.9592934946879389,
+      "max": 0.9622370812896502
+    },
+    "f1": {
+      "scores": [
+        0.7726683937823834,
+        0.7675623179022337,
+        0.7707694789482175,
+        0.7702549115116091,
+        0.7670089858793325
+      ],
+      "mean": 0.7696528176047552,
+      "std": 0.0021006277400018275,
+      "min": 0.7670089858793325,
+      "max": 0.7726683937823834
+    },
+    "precision": {
+      "scores": [
+        0.8313588850174216,
+        0.8255571030640668,
+        0.8257863809194608,
+        0.8314055380301437,
+        0.8168147641831852
+      ],
+      "mean": 0.8261845342428555,
+      "std": 0.005336245373092788,
+      "min": 0.8168147641831852,
+      "max": 0.8314055380301437
+    },
+    "recall": {
+      "scores": [
+        0.7217180883242589,
+        0.7171808832425892,
+        0.7226255293405929,
+        0.7174833635813672,
+        0.7229280096793709
+      ],
+      "mean": 0.7203871748336358,
+      "std": 0.0025278381628283404,
+      "min": 0.7171808832425892,
+      "max": 0.7229280096793709
+    },
+    "predictions": {
+      "roc_auc": 0.9610472164283679,
+      "precision": 0.8261412515609824,
+      "recall": 0.7203871748336358,
+      "f1": 0.7696483971044468,
+      "fbeta_2": 0.7393150718951002,
+      "pr_auc": 0.8128406544230893
+    }
+  },
+  "overfitting_analysis": {
+    "roc_auc_gap": -0.0032592007200265005,
+    "cv_roc_auc_mean": 0.9610521698326971,
+    "test_roc_auc": 0.9643113705527236,
+    "f1_gap": -0.01638235117973974,
+    "cv_f1_mean": 0.7696528176047552,
+    "test_f1": 0.786035168784495,
+    "fbeta_2_gap": -0.01898111433570715,
+    "cv_fbeta_2_mean": 0.7393150718951002,
+    "test_fbeta_2": 0.7582961862308073,
+    "overfitting_detected": false,
+    "warnings": []
+  }
+}

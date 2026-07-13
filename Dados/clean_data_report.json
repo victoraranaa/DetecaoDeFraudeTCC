@@ -1,0 +1,446 @@
+{
+  "initial_shape": [
+    590540,
+    434
+  ],
+  "final_shape": [
+    590540,
+    434
+  ],
+  "rows_removed": 0,
+  "rows_removed_pct": 0.0,
+  "steps": [
+    {
+      "step": "Outliers detected (IQR method)",
+      "action": "keep for ABT stage (use capping or transformation)",
+      "detail": "17 columns checked"
+    }
+  ],
+  "outliers": [
+    {
+      "column": "TransactionAmt",
+      "count": 66482,
+      "pct": 11.2578,
+      "lower_bound": -79.1975,
+      "upper_bound": 247.5185
+    },
+    {
+      "column": "TransactionDT",
+      "count": 0,
+      "pct": 0.0,
+      "lower_bound": -9302285.625,
+      "upper_bound": 23575963.375
+    },
+    {
+      "column": "D1",
+      "count": 74185,
+      "pct": 12.5622,
+      "lower_bound": -183.0,
+      "upper_bound": 305.0
+    },
+    {
+      "column": "D2",
+      "count": 0,
+      "pct": 0.0,
+      "lower_bound": -349.0,
+      "upper_bound": 651.0
+    },
+    {
+      "column": "D3",
+      "count": 32288,
+      "pct": 5.4675,
+      "lower_bound": -38.0,
+      "upper_bound": 66.0
+    },
+    {
+      "column": "D4",
+      "count": 2974,
+      "pct": 0.5036,
+      "lower_bound": -379.5,
+      "upper_bound": 632.5
+    },
+    {
+      "column": "D5",
+      "count": 37750,
+      "pct": 6.3925,
+      "lower_bound": -45.5,
+      "upper_bound": 78.5
+    },
+    {
+      "column": "D6",
+      "count": 14828,
+      "pct": 2.5109,
+      "lower_bound": -60.0,
+      "upper_bound": 100.0
+    },
+    {
+      "column": "D7",
+      "count": 7177,
+      "pct": 1.2153,
+      "lower_bound": -25.5,
+      "upper_bound": 42.5
+    },
+    {
+      "column": "D8",
+      "count": 7041,
+      "pct": 1.1923,
+      "lower_bound": -279.5417,
+      "upper_bound": 468.4583
+    },
+    {
+      "column": "D9",
+      "count": 0,
+      "pct": 0.0,
+      "lower_bound": -0.7292,
+      "upper_bound": 1.7708
+    },
+    {
+      "column": "D10",
+      "count": 40148,
+      "pct": 6.7985,
+      "lower_bound": -295.5,
+      "upper_bound": 492.5
+    },
+    {
+      "column": "D11",
+      "count": 0,
+      "pct": 0.0,
+      "lower_bound": -411.0,
+      "upper_bound": 685.0
+    },
+    {
+      "column": "D12",
+      "count": 13749,
+      "pct": 2.3282,
+      "lower_bound": -19.5,
+      "upper_bound": 32.5
+    },
+    {
+      "column": "D13",
+      "count": 13112,
+      "pct": 2.2203,
+      "lower_bound": 0.0,
+      "upper_bound": 0.0
+    },
+    {
+      "column": "D14",
+      "count": 14544,
+      "pct": 2.4628,
+      "lower_bound": -3.0,
+      "upper_bound": 5.0
+    },
+    {
+      "column": "D15",
+      "count": 132,
+      "pct": 0.0224,
+      "lower_bound": -471.0,
+      "upper_bound": 785.0
+    }
+  ],
+  "categorical_profiles": [
+    {
+      "name": "ProductCD",
+      "n_unique": 5,
+      "n_missing": 0,
+      "missing_pct": 0.0,
+      "top_values": [
+        "W",
+        "C",
+        "R"
+      ]
+    },
+    {
+      "name": "card4",
+      "n_unique": 4,
+      "n_missing": 1577,
+      "missing_pct": 0.267,
+      "top_values": [
+        "visa",
+        "mastercard",
+        "american express"
+      ]
+    },
+    {
+      "name": "card6",
+      "n_unique": 4,
+      "n_missing": 1571,
+      "missing_pct": 0.266,
+      "top_values": [
+        "debit",
+        "credit",
+        "debit or credit"
+      ]
+    },
+    {
+      "name": "P_emaildomain",
+      "n_unique": 59,
+      "n_missing": 94456,
+      "missing_pct": 15.9949,
+      "top_values": []
+    },
+    {
+      "name": "R_emaildomain",
+      "n_unique": 60,
+      "n_missing": 453249,
+      "missing_pct": 76.7516,
+      "top_values": []
+    },
+    {
+      "name": "M1",
+      "n_unique": 2,
+      "n_missing": 271100,
+      "missing_pct": 45.9071,
+      "top_values": [
+        "T",
+        "F"
+      ]
+    },
+    {
+      "name": "M2",
+      "n_unique": 2,
+      "n_missing": 271100,
+      "missing_pct": 45.9071,
+      "top_values": [
+        "T",
+        "F"
+      ]
+    },
+    {
+      "name": "M3",
+      "n_unique": 2,
+      "n_missing": 271100,
+      "missing_pct": 45.9071,
+      "top_values": [
+        "T",
+        "F"
+      ]
+    },
+    {
+      "name": "M4",
+      "n_unique": 3,
+      "n_missing": 281444,
+      "missing_pct": 47.6588,
+      "top_values": [
+        "M0",
+        "M2",
+        "M1"
+      ]
+    },
+    {
+      "name": "M5",
+      "n_unique": 2,
+      "n_missing": 350482,
+      "missing_pct": 59.3494,
+      "top_values": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "name": "M6",
+      "n_unique": 2,
+      "n_missing": 169360,
+      "missing_pct": 28.6788,
+      "top_values": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "name": "M7",
+      "n_unique": 2,
+      "n_missing": 346265,
+      "missing_pct": 58.6353,
+      "top_values": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "name": "M8",
+      "n_unique": 2,
+      "n_missing": 346252,
+      "missing_pct": 58.6331,
+      "top_values": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "name": "M9",
+      "n_unique": 2,
+      "n_missing": 346252,
+      "missing_pct": 58.6331,
+      "top_values": [
+        "T",
+        "F"
+      ]
+    },
+    {
+      "name": "id_12",
+      "n_unique": 2,
+      "n_missing": 446307,
+      "missing_pct": 75.5761,
+      "top_values": [
+        "NotFound",
+        "Found"
+      ]
+    },
+    {
+      "name": "id_15",
+      "n_unique": 3,
+      "n_missing": 449555,
+      "missing_pct": 76.1261,
+      "top_values": [
+        "Found",
+        "New",
+        "Unknown"
+      ]
+    },
+    {
+      "name": "id_16",
+      "n_unique": 2,
+      "n_missing": 461200,
+      "missing_pct": 78.098,
+      "top_values": [
+        "Found",
+        "NotFound"
+      ]
+    },
+    {
+      "name": "id_23",
+      "n_unique": 3,
+      "n_missing": 585371,
+      "missing_pct": 99.1247,
+      "top_values": [
+        "IP_PROXY:TRANSPARENT",
+        "IP_PROXY:ANONYMOUS",
+        "IP_PROXY:HIDDEN"
+      ]
+    },
+    {
+      "name": "id_27",
+      "n_unique": 2,
+      "n_missing": 585371,
+      "missing_pct": 99.1247,
+      "top_values": [
+        "Found",
+        "NotFound"
+      ]
+    },
+    {
+      "name": "id_28",
+      "n_unique": 2,
+      "n_missing": 449562,
+      "missing_pct": 76.1273,
+      "top_values": [
+        "Found",
+        "New"
+      ]
+    },
+    {
+      "name": "id_29",
+      "n_unique": 2,
+      "n_missing": 449562,
+      "missing_pct": 76.1273,
+      "top_values": [
+        "Found",
+        "NotFound"
+      ]
+    },
+    {
+      "name": "id_30",
+      "n_unique": 75,
+      "n_missing": 512975,
+      "missing_pct": 86.8654,
+      "top_values": []
+    },
+    {
+      "name": "id_31",
+      "n_unique": 130,
+      "n_missing": 450258,
+      "missing_pct": 76.2451,
+      "top_values": []
+    },
+    {
+      "name": "id_33",
+      "n_unique": 260,
+      "n_missing": 517251,
+      "missing_pct": 87.5895,
+      "top_values": []
+    },
+    {
+      "name": "id_34",
+      "n_unique": 4,
+      "n_missing": 512735,
+      "missing_pct": 86.8248,
+      "top_values": [
+        "match_status:2",
+        "match_status:1",
+        "match_status:0"
+      ]
+    },
+    {
+      "name": "id_35",
+      "n_unique": 2,
+      "n_missing": 449555,
+      "missing_pct": 76.1261,
+      "top_values": [
+        "T",
+        "F"
+      ]
+    },
+    {
+      "name": "id_36",
+      "n_unique": 2,
+      "n_missing": 449555,
+      "missing_pct": 76.1261,
+      "top_values": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "name": "id_37",
+      "n_unique": 2,
+      "n_missing": 449555,
+      "missing_pct": 76.1261,
+      "top_values": [
+        "T",
+        "F"
+      ]
+    },
+    {
+      "name": "id_38",
+      "n_unique": 2,
+      "n_missing": 449555,
+      "missing_pct": 76.1261,
+      "top_values": [
+        "F",
+        "T"
+      ]
+    },
+    {
+      "name": "DeviceType",
+      "n_unique": 2,
+      "n_missing": 449730,
+      "missing_pct": 76.1557,
+      "top_values": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "name": "DeviceInfo",
+      "n_unique": 1786,
+      "n_missing": 471874,
+      "missing_pct": 79.9055,
+      "top_values": []
+    }
+  ],
+  "target_distribution": {
+    "legitimo": 569877,
+    "fraude": 20663
+  },
+  "target_fraud_rate_pct": 3.499
+}

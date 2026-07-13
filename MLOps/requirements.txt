@@ -1,0 +1,7 @@
+# Dependências mínimas do app de deploy (Etapa 6) — subconjunto do requirements.txt
+# da raiz do projeto. Não inclui tensorflow/jupyter/optuna, que são só do treino.
+numpy==2.4.4
+pandas==3.0.3
+scikit-learn==1.9.0
+xgboost==3.2.0
+streamlit==1.58.0

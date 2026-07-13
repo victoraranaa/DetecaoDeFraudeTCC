@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+
+# Dados brutos do Kaggle (nao redistribuir) e arquivos gerados pelo pipeline
+# (clean_data.csv ~700MB, abt.csv 5GB+) - acima do limite de 100MB do GitHub.
+# So os metadados pequenos (abt_metadata.json, clean_data_report.json) ficam.
+Dados/raw/
+Dados/clean_data.csv
+Dados/abt.csv
+predicoes*.csv
+
+# Copias da camada silver/gold geradas pelo MLOps/pipeline_orchestration.py -
+# sao apenas copias de Dados/clean_data.csv e Dados/abt.csv (este ultimo, 5GB+)
+Dados/silver/
+Dados/gold/

@@ -1,0 +1,23 @@
+# Etapa 6 (deploy) só precisa de Model/*.pkl e /json, dos JSONs de metadados
+# de Dados/ (clean_data_report.json e abt_metadata.json, usados pela página de
+# pré-processamento) e de MLOps/app. Ignorar o resto evita mandar gigabytes
+# (os CSVs de Dados/ têm 5GB+) no build context.
+.venv/
+Dados/*.csv
+Dados/raw/
+Dados/silver/
+Dados/gold/
+predicoes.csv
+DataPipeline/
+deep_learning/
+Docs/
+01_negocio/
+02_eda/
+03_preparacao/
+04_modelo/
+05_avaliacao/
+.git/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+Model/optuna_study.pkl

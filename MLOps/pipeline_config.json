@@ -1,0 +1,18 @@
+{
+  "layers": {
+    "raw": "Dados/raw",
+    "silver": "Dados/silver",
+    "gold": "Dados/gold"
+  },
+  "files": {
+    "clean_data": "Dados/clean_data.csv",
+    "abt": "Dados/abt.csv",
+    "predictions": "predicoes.csv"
+  },
+  "scripts": {
+    "sanitization": "DataPipeline/data_sanitization.py",
+    "abt_transform": "DataPipeline/abt_transform.py",
+    "predict": "Model/predict.py"
+  },
+  "note": "raw ja e o nome usado pelo grupo (Dados/raw/). silver e gold sao copias organizadas de clean_data.csv e abt.csv - os arquivos originais continuam nos caminhos de sempre porque o resto do projeto (grupo e Etapa 6) ja espera esses caminhos."
+}

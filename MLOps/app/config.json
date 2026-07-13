@@ -1,0 +1,8 @@
+{
+  "threshold": 0.5,
+  "risk_bands": {
+    "low_max": 0.3,
+    "medium_max": 0.7
+  },
+  "note": "threshold usado no train.py do grupo (fixo, sem otimizacao). risk_bands seguem a politica de revisao manual do negocio (0,3 a 0,7 = fila de revisao; acima de 0,7 = bloqueio)."
+}

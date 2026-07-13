@@ -1,0 +1,42 @@
+# Core ML/Data Science (compatible with Python 3.11)
+numpy==1.26.4
+pandas==3
+scikit-learn==1.9.0
+scipy==1.13.1
+joblib==1.5.3
+
+# Gradient Boosting
+lightgbm==4.6.0
+xgboost==3.0.2
+
+# Hyperparameter Optimization
+optuna==4.2.1
+
+# Deep Learning (Keras/TensorFlow - sem PyTorch/VC++ issues)
+# tensorflow 2.15 inclui keras 2.15 internamente
+tensorflow==2.15.0
+
+# Visualization
+matplotlib==3.11.0
+seaborn==0.13.2
+
+# Jupyter/Notebook
+jupyter_client==8.9.1
+jupyter_core==5.9.1
+ipykernel==7.3.0
+ipython==9.14.1
+
+# Utilities
+python-dateutil==2.9.0.post0
+pytz==2026.1
+requests==2.34.2
+pyarrow==24.0.0
+toml==0.10.2
+
+# Optional: for development
+pytest==8.4.0
+black==24.10.0
+flake8==7.1.2
+
+# Etapa 6 - Deploy/MLOps (individual, nao faz parte do repo do colega)
+streamlit==1.58.0
