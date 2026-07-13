@@ -39,7 +39,7 @@ MLOps/Dockerfile + docker-compose.yml  empacota o app Streamlit
 
 **Sobre as camadas raw/silver/gold:** `Dados/silver/clean_data.csv` e `Dados/gold/abt.csv` são cópias organizadas, geradas pelo próprio `pipeline_orchestration.py` depois de cada etapa. Os arquivos originais (`Dados/clean_data.csv`, `Dados/abt.csv`) continuam nos caminhos de sempre, porque o resto do projeto (scripts do grupo e o app) já espera esses caminhos — criar cópias evita ter que alterar o código do grupo só para reorganizar pastas.
 
-Avaliei usar o Airflow para orquestrar essas camadas (é a ferramenta mais comum pra isso e aparece no diagrama de referência do PDF do projeto), mas optei por manter só o `pipeline_orchestration.py` nesta entrega — um comando só, já testado, e mais simples de manter dado o prazo apertado. Não é desconhecimento da ferramenta, foi priorizar algo funcional e 100% explicável em vez de uma peça de infraestrutura a mais.
+Avaliei usar o Airflow para orquestrar essas camadas (é a ferramenta mais comum pra isso e aparece no diagrama de referência do PDF do projeto), mas optei por manter só o `pipeline_orchestration.py` nesta entrega — um comando só, já testado e mais simples de manter dado o prazo apertado.
 
 ## O que o app mostra
 
@@ -52,7 +52,7 @@ Abaixo das abas, uma seção fixa mostra a **performance do modelo** (ROC-AUC, P
 ## Por que o app simplifica a entrada (aba Individual)
 
 O modelo usa 462 colunas (incluindo ~339 variáveis Vesta opacas, V1-V339, que
-são os maiores preditores — ver `05_avaliacao/`). Não faz sentido pedir isso
+são os maiores preditores — ver `Model/evaluation.ipynb`). Não faz sentido pedir isso
 num formulário. A aba Individual expõe só 6 campos interpretáveis (valor, produto,
 bandeira/tipo de cartão, dispositivo, verificação M4) e preenche o resto com o
 valor de uma **transação real** da ABT de treino — o usuário escolhe entre um
@@ -157,19 +157,9 @@ de transações também. O que monitorar:
 O app hoje só mostra o resultado na tela — quem decide o que fazer com aquilo ainda é uma pessoa. O passo natural depois dessa entrega é conectar a predição a uma ação automática, sem esperar alguém olhar o dashboard. Como o app já calcula um nível de risco (BAIXO/MÉDIO/ALTO, ver `config.json`), cada faixa pode disparar uma ação diferente:
 
 - **BAIXO risco:** aprovar direto, sem intervenção humana — é a maioria das transações e não faz sentido gerar atrito nelas.
-- **MÉDIO risco:** cair numa fila de revisão manual (essa política já está prevista em `01_negocio/problema.md` — probabilidade entre 0,3 e 0,7). Hoje essa fila seria só uma lista; o próximo passo é ter um **agente de IA** que, antes de a transação chegar ao analista, já monta um resumo automático: qual foi o valor, o produto, o histórico recente daquele cartão e quais features pesaram mais na decisão do modelo (usando a importância de features que já tenho em `training_metrics.json`). Isso poupa o analista de abrir várias telas para entender o caso.
+- **MÉDIO risco:** cair numa fila de revisão manual (política de negócio prevista desde a Etapa 1 — probabilidade entre 0,3 e 0,7). Hoje essa fila seria só uma lista; o próximo passo é ter um **agente de IA** que, antes de a transação chegar ao analista, já monta um resumo automático: qual foi o valor, o produto, o histórico recente daquele cartão e quais features pesaram mais na decisão do modelo (usando a importância de features que já tenho em `training_metrics.json`). Isso poupa o analista de abrir várias telas para entender o caso.
 - **ALTO risco:** bloquear a transação automaticamente e disparar uma notificação (SMS/e-mail) pro portador confirmar se foi ele mesmo — um fluxo parecido com o que os bancos já fazem quando o cartão é usado num lugar incomum.
 
 Do lado do monitoramento (seção anterior), a ideia é parecida: em vez de alguém checar o drift manualmente todo mês, um agente poderia rodar essa checagem sozinho e, se encontrar uma queda de AUC-ROC ou um drift significativo, abrir automaticamente um chamado pro time de dados avaliar o retreino — a pessoa só entra quando já existe um sinal concreto de que algo mudou, não para checar se mudou.
 
 Nada disso está implementado neste projeto — é uma proposta de próximo passo, pensada pra mostrar que a solução tem para onde crescer depois da demonstração da Etapa 6, e não pra ser confundida com algo que já está rodando.
-
-## Critérios de Avaliação Individual
-
-| Critério | Como este entregável atende |
-|---|---|
-| Pipeline completo (dado bruto → predição) | `pipeline_orchestration.py` encadeia sanitização → ABT → `predict.py` |
-| Arquitetura em camadas (raw/silver/gold) | `Dados/raw/`, `Dados/silver/`, `Dados/gold/` (as duas últimas organizadas pelo `pipeline_orchestration.py`); caminhos em `pipeline_config.json` |
-| Docker funcionando | `docker compose up --build` testado localmente, sobe sem erro |
-| Qualidade de código | `logging` em vez de `print`, threshold via `config.json`/`--threshold`, caminhos via `pipeline_config.json` |
-| Fundamentação teórica | Simplificações documentadas (perfis-base, escala dos campos) |

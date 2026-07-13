@@ -110,7 +110,7 @@ O MBA ensina a organizar dados de um pipeline em três camadas — é a chamada 
 
 As pastas `silver` e `gold` são **cópias organizadas**, criadas pelo próprio `pipeline_orchestration.py` (função `organize_layer`, ver item 5) depois de cada etapa. Os arquivos originais (`Dados/clean_data.csv`, `Dados/abt.csv`) continuam nos mesmos lugares de sempre, porque o resto do projeto (scripts do grupo e o app da Etapa 6) já espera esses caminhos. Criar cópias evita ter que mexer no código do grupo só para renomear pastas. Os nomes das camadas vêm de `MLOps/pipeline_config.json`, não estão fixos no código.
 
-**Por que não usei um orquestrador dedicado (Airflow):** é a ferramenta mais comum para esse tipo de pipeline e aparece no diagrama de referência do PDF do projeto, mas orquestrar de verdade (agendamento, retentativas, interface de monitoramento) é um estudo novo em cima de tudo que já falta pra entrega. Preferi ter uma arquitetura em camadas funcional e 100% explicável a uma peça a mais que ainda não domino bem o suficiente para alterar com segurança. Foi decisão consciente pelo prazo, não desconhecimento da ferramenta.
+**Por que não usei um orquestrador dedicado (Airflow):** é a ferramenta mais comum para esse tipo de pipeline e aparece no diagrama de referência do PDF do projeto, mas orquestrar de verdade (agendamento, retentativas, interface de monitoramento) é um estudo novo em cima de tudo que já falta pra entrega. Preferi ter uma arquitetura em camadas funcional e simples de explicar dado o prazo.
 
 ### 7. Página de referência sobre pré-processamento (`MLOps/app/pages/1_Pre_processamento.py`)
 
@@ -170,17 +170,6 @@ python Model/predict.py --input Dados/abt.csv --output predicoes.csv
 # Pipeline completo (bruto -> ABT -> predição), já organiza Dados/silver/ e Dados/gold/
 python MLOps/pipeline_orchestration.py --output predicoes.csv
 ```
-
----
-
-## Critérios de Avaliação Individual
-
-| Critério | Peso | Como este entregável atende |
-|---------|------|-------------------|
-| Fundamentação teórica | Parte do 60% | Simplificações documentadas (perfis-base, escala dos campos, hora fora do formulário) |
-| Qualidade de código | Parte do 20% | `logging` em vez de `print`, threshold via `config.json`, caminhos via `pipeline_config.json` |
-| Pipeline completo | Parte do 20% | `pipeline_orchestration.py` encadeia sanitização → ABT → `Model/predict.py`, organizando as camadas raw/silver/gold |
-| Docker funcionando | Parte do 20% | `docker compose up --build` testado localmente, sobe sem erro |
 
 ---
 

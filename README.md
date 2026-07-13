@@ -41,7 +41,7 @@ requirements.txt       Dependências do projeto inteiro
 
 ## Como treinar o modelo
 
-Os dados brutos do Kaggle (`train_transaction.csv`, `train_identity.csv`, e os arquivos de teste) precisam estar em `Dados/raw/` antes de rodar qualquer coisa.
+Os dados brutos do Kaggle (`train_transaction.csv`, `train_identity.csv`, e os arquivos de teste) precisam estar em `Dados/raw/` antes de rodar qualquer coisa. Eles não entram no repositório do GitHub por causa do limite de tamanho, mas estão incluídos na pasta `Dados/raw/` do zip enviado junto com esta entrega.
 
 ```bash
 # 1. Instalar as dependências
