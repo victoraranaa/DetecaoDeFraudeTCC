@@ -147,6 +147,18 @@ de transações também. O que monitorar:
   rotulada mensal, ou se o KS test indicar drift significativo em
   `TransactionAmt`/`V_top20_sum`, retreinar com dados mais recentes usando o
   mesmo `Model/train.py` do grupo.
+- **Falhas operacionais:** além de drift e queda de performance, também vale
+  monitorar se o serviço está de pé. Um healthcheck simples (endpoint HTTP
+  respondendo, ou `docker compose ps` mostrando o container saudável) já pega
+  o caso mais básico de indisponibilidade. No pipeline em lote,
+  `pipeline_orchestration.py` já para e retorna código de saída diferente de
+  zero se qualquer etapa falhar (`run_step()`) — em produção, isso alimentaria
+  um alerta automático (e-mail/Slack pro time de dados) em vez de só aparecer
+  no log do terminal, como acontece hoje. Erros de predição individual (ex.:
+  coluna faltando no CSV de entrada) já falham rápido com `KeyError`, em vez
+  de prever errado silenciosamente — o próximo passo seria capturar esse erro
+  e registrar numa fila de "falhas de predição" para investigação, em vez de
+  só derrubar a requisição sem deixar rastro.
 
 ## Próximos Passos — Ações Automatizadas (ML + Automação + Agentes de IA)
 
